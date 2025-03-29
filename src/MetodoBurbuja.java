@@ -1,35 +1,38 @@
 public class MetodoBurbuja {
 
-    public void ordenarAsendente(int[] arreglo, boolean isDes) {
-        for (int i = 0; i < arreglo.length; i++) {
-            for (int j = i + 1; j < arreglo.length; j++) {
-                // System.out.println("i = " + i + ", j = " + j);
-
-                if (isDes) {
-
-                    if (arreglo[i] < arreglo[j]) { // Condicion de cambio
-                        int aux = arreglo[i];
-                        arreglo[i] = arreglo[j];
-                        arreglo[j] = aux;
-                    }
-                } else {
-                    if (arreglo[i] > arreglo[j]) {
-                        int aux = arreglo[i];
-                        arreglo[i] = arreglo[j];
-                        arreglo[j] = aux;
+    public void ordenarAscendente(int[] arreglo, boolean mostrarPasos) {
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            for (int j = 0; j < arreglo.length - 1 - i; j++) {
+                if (arreglo[j] > arreglo[j + 1]) {
+                    int temp = arreglo[j];
+                    arreglo[j] = arreglo[j + 1];
+                    arreglo[j + 1] = temp;
+                    if (mostrarPasos) {
+                        imprimirArreglo(arreglo);
                     }
                 }
             }
         }
     }
 
-    public void imprimirArreglo(int[] arreglo) {
-        /// PYTHON
-        /// for i in range(len(arreglo)):
-        /// print(arreglo[i])
-        for (int i = 0; i < arreglo.length; i++) {
-            System.out.print(arreglo[i] + " - ");
+    public void ordenarDescendente(int[] arreglo, boolean mostrarPasos) {
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            for (int j = 0; j < arreglo.length - 1 - i; j++) {
+                if (arreglo[j] < arreglo[j + 1]) {
+                    int temp = arreglo[j];
+                    arreglo[j] = arreglo[j + 1];
+                    arreglo[j + 1] = temp;
+                    if (mostrarPasos) {
+                        imprimirArreglo(arreglo);
+                    }
+                }
+            }
         }
-        System.out.println(); 
+    }
+    public void imprimirArreglo(int[] arreglo) {
+        for (int num : arreglo) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
     }
 }

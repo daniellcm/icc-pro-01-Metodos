@@ -1,31 +1,40 @@
 public class MetodoInsercion {
 
-    public void printArray(int[] array) {
-        for (int i : array) {
-            System.out.print(i + " ");
+    public void ordenarInsercion(int[] arr, boolean mostrarPasos, boolean isDescendente) {
+        System.out.println("Arreglo original:");
+        imprimirArray(arr);
+
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            
+            if (isDescendente) {
+                while (j >= 0 && arr[j] < key) {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+            } else {
+                while (j >= 0 && arr[j] > key) {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+            }
+            arr[j + 1] = key;
+            if (mostrarPasos) {
+                System.out.println("Paso " + i + ":");
+                imprimirArray(arr);
+            }
+        }
+
+        System.out.println("Arreglo ordenado (" + (isDescendente ? "Descendente" : "Ascendente") + "):");
+        imprimirArray(arr);
+    }
+
+    public void imprimirArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
         System.out.println();
-    }
-    public void ordenarInsercion(int[] array, boolean isDes) {
-        int n = array.length;
-        for (int i = 1; i < n; ++i) {
-            int key = array[i];
-            int j = i - 1;
-            if (array[j] > key) {
-                System.out.println("i = " + i + ", j = " + j + " aux = " + key);
-                System.out.println("Compara aux: " + key + " con arreglo " + j + " "+ array[j]);
-                System.out.println("Cambia " + key + " con " + array[j]);
-                for (int k = 0; k < array.length; k++) {
-                    System.out.print(array[k] + " ");
-                }
-                System.out.println();
-            }
-            
-            while (j >= 0 && array[j] > key) {
-                array[j + 1] = array[j];
-                j = j - 1;
-            }
-            array[j + 1] = key;
-        }
     }
 }

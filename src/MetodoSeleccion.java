@@ -7,7 +7,6 @@ public class MetodoSeleccion {
                     iM = j; 
                 }
             }
-
             if (i != iM) {
                 int aux = arreglo[i];
                 arreglo[i] = arreglo[iM];
